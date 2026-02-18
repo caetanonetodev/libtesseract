@@ -1,30 +1,44 @@
 # libtesseract
 
-![Swift Tools Version Badge](https://img.shields.io/badge/swift%20tools%20version-5.3-blue.svg) ![ios platform badge](https://img.shields.io/badge/iOS-11.0%20%2B-orange.svg) ![catalyst platform badge](https://img.shields.io/badge/macOS%20%28catalyst%29-10.15%20%2B-purple.svg) ![macOS platform badge](https://img.shields.io/badge/macOS-10.13%20%2B-red.svg) ![Build](https://github.com/SwiftyTesseract/libtesseract/workflows/Build/badge.svg)
+![Swift Tools Version Badge](https://img.shields.io/badge/swift%20tools%20version-5.7-blue.svg) ![ios platform badge](https://img.shields.io/badge/iOS-16.0%20%2B-orange.svg) ![catalyst platform badge](https://img.shields.io/badge/macOS%20%28catalyst%29-16.0%20%2B-purple.svg) ![macOS platform badge](https://img.shields.io/badge/macOS-13.0%20%2B-red.svg)
 
-## This library is no longer maintained and will see no further updates.
-If you need OCR support in your application, I suggest you use the first party option by using the [Text Recognition](https://developer.apple.com/documentation/vision/recognizing_text_in_images)
-capabilities of Apple's Vision framework. If your language is not supported by Apple, I suggest you fork this project and maintain it yourself. If you need assistance migrating to another solution
-or in maintaining your own fork, you or your company can reach out to me to arrange a contract agreement.
+Pre-built [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) xcframework for Apple platforms, distributed as a Swift package. This is a maintained fork of [SwiftyTesseract/libtesseract](https://github.com/SwiftyTesseract/libtesseract).
 
---------
+If you're looking for a Swift-friendly API on top of the raw C library, see [SwiftyTesseract](https://github.com/caetanonetodev/SwiftyTesseract).
 
-This repo contains build scripts to compile [Tesseract](https://github.com/tesseract-ocr/tesseract) and it's dependencies for Apple platforms to be distributed as a Swift package. It's primary goal is to aid in migrating [SwiftyTesseract](https://github.com/SwiftyTesseract/SwiftyTesseract) to be consumable as a Swift Package Manager dependency. If you're looking for looking for a quick way to get started with using Tesseract in your Apple platform application without the rough edges of memory management and dealing with C interop, then you should start with SwiftyTesseract.
+## Included Versions
+
+| Library | Version |
+|---------|---------|
+| Tesseract | 5.5.2 |
+| Leptonica | 1.84.1 |
+| libpng | 1.6.44 |
+| libjpeg | 9f |
+| libtiff | 4.7.0 |
+
+## Supported Platforms
+
+| Platform | Architectures | Minimum Version |
+|----------|--------------|-----------------|
+| iOS | arm64 | 16.0 |
+| iOS Simulator | arm64, x86_64 | 16.0 |
+| macOS | arm64, x86_64 | 13.0 |
+| Mac Catalyst | arm64 | 16.0 |
 
 ## Installation
-Add libtesseract as a Swift Package Dependency
+
+Add libtesseract as a Swift Package dependency:
+
 ```swift
 // Package.swift
-// swift-tools-version:5.3
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.7
 import PackageDescription
 
 let package = Package(
   name: "AwesomePackage",
   platforms: [
-    // These are the minimum versions libtesseract supports
-    .macOS(.v10_13),
-    .iOS(.v11),
+    .macOS(.v13),
+    .iOS(.v16),
   ],
   products: [
     .library(
@@ -33,53 +47,54 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(url: "https://github.com/SwiftyTesseract/libtesseract.git", from: "0.2.0")
+    .package(url: "https://github.com/caetanonetodev/libtesseract.git", from: "1.0.0")
   ],
   targets: [
     .target(
       name: "AwesomePackage",
       dependencies: ["libtesseract"],
-      linkerSettings: [.linkedLibrary("z"), .linkedLibrary("c++")]
+      linkerSettings: [
+        .linkedLibrary("z"),
+        .linkedLibrary("c++"),
+        .linkedFramework("Accelerate"),
+      ]
     ),
   ]
 )
-
-// AwesomePackage.swift
-import libtesseract
-```
-### Additional Required Configuration
-You must link against the following libraries:
-* libc++
-* libz
-
-This can be done in an Xcode-based project by adding these in Build Phases -> Link Binary with Libaries
-![screenshot of xcode linking libc++ and libz](link_libraries.png)
-
-In a Swift Package Manager project, this can be achieved by adding the following to your target `linkerSettings`:
-```swift
-// See Package.swift example above for full context
-  targets: [
-    .target(
-      name: "AwesomePackage",
-      dependencies: ["libtesseract"],
-      linkerSettings: [.linkedLibrary("z"), .linkedLibrary("c++")]
-    ),
-  ]
 ```
 
-See SwiftyTesseract's [Additonal Configuration](https://github.com/SwiftyTesseract/SwiftyTesseract#additional-configuration) notes on considerations for including language training data files.
+### Required Linker Dependencies
 
-## Build dependencies
-If you want to build libtesseract from source, you need `automake`, `pkg-config`, and `task` installed on your machine. These can be installed via homebrew:
+Your target must link against the following:
 
-`brew install automake pkg-config go-task/tap/go-task`
+- **libz** — compression
+- **libc++** — C++ standard library
+- **Accelerate.framework** — signal processing (used by Leptonica)
 
-To build a library for distribution run `task build-tesseract-xcframework-zip`
+In an Xcode project, add these in **Build Phases > Link Binary with Libraries**.
+
+## Building from Source
+
+If you want to build the xcframework locally, you need `automake`, `pkg-config`, and `task` installed:
+
+```bash
+brew install automake pkg-config go-task/tap/go-task
+```
+
+Then run:
+
+```bash
+task build-tesseract-xcframework-zip
+```
+
+This compiles all 5 libraries for all 4 platforms and produces `libtesseract.xcframework` and a zip file ready for release.
 
 ## Attributions
-libtesseract disributes the following dependencies in binary form:
-* [Tesseract](https://github.com/tesseract-ocr/tesseract) - License under the [Apache v2 License](https://github.com/tesseract-ocr/tesseract/blob/master/LICENSE)
-* [Leptonica](http://www.leptonica.org) - Licensed under the [BSD 2-Clause License](http://www.leptonica.org/about-the-license.html)
-* [libpng](http://www.libpng.org) - Licensed under the [Libpng License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt)
-* [libjpeg](http://libjpeg.sourceforge.net) - Licensed under the [Libjpeg License](http://jpegclub.org/reference/libjpeg-license/)
-* [libtiff](http://www.libtiff.org) - Licensed under the [Libtiff License](https://fedoraproject.org/wiki/Licensing:Libtiff?rd=Licensing/libtiff)
+
+libtesseract distributes the following dependencies in binary form:
+
+- [Tesseract](https://github.com/tesseract-ocr/tesseract) — Licensed under the [Apache v2 License](https://github.com/tesseract-ocr/tesseract/blob/master/LICENSE)
+- [Leptonica](http://www.leptonica.org) — Licensed under the [BSD 2-Clause License](http://www.leptonica.org/about-the-license.html)
+- [libpng](http://www.libpng.org) — Licensed under the [Libpng License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt)
+- [libjpeg](http://libjpeg.sourceforge.net) — Licensed under the [Libjpeg License](http://jpegclub.org/reference/libjpeg-license/)
+- [libtiff](http://www.libtiff.org) — Licensed under the [Libtiff License](https://fedoraproject.org/wiki/Licensing:Libtiff?rd=Licensing/libtiff)
