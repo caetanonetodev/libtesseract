@@ -15,7 +15,7 @@ let package = Package(
     .binaryTarget(
       name: "libtesseract",
       url: "https://github.com/caetanonetodev/libtesseract/releases/download/1.0.0/libtesseract-1.0.0.xcframework.zip",
-      checksum: "c9f73db902b2c027aa2d1270fabc8c46fc29033ab4ff8e6e9fda6dc1b080be7c"
+      checksum: "8ba1efff4945c5d0dbdec0a274ce44d4b74d34a3e9f5d649f0ebf7d6e8e7b265"
     )
   ]
 )

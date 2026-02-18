@@ -32,6 +32,10 @@
 		AABB000324AC6C340097319E /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = AABB000224AC6C340097319E /* version.h */; };
 		AABB000524AC700D0097319E /* export.h in Headers */ = {isa = PBXBuildFile; fileRef = AABB000024AC6C340097319E /* export.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AABB000724AC700D0097319E /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = AABB000224AC6C340097319E /* version.h */; };
+		CCDD000124AC6C340097319E /* hashmap.h in Headers */ = {isa = PBXBuildFile; fileRef = CCDD000024AC6C340097319E /* hashmap.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCDD000324AC6C340097319E /* colorfill.h in Headers */ = {isa = PBXBuildFile; fileRef = CCDD000224AC6C340097319E /* colorfill.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCDD000524AC700D0097319E /* hashmap.h in Headers */ = {isa = PBXBuildFile; fileRef = CCDD000024AC6C340097319E /* hashmap.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCDD000724AC700D0097319E /* colorfill.h in Headers */ = {isa = PBXBuildFile; fileRef = CCDD000224AC6C340097319E /* colorfill.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62BA6AF424AC6B610097319E /* allheaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6AF324AC6B610097319E /* allheaders.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62BA6B3024AC6C350097319E /* ocrclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6AF524AC6C340097319E /* ocrclass.h */; };
 
@@ -84,7 +88,7 @@
 		62BA6B6024AC6C370097319E /* jconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6B2524AC6C350097319E /* jconfig.h */; };
 
 		62BA6B6224AC6C370097319E /* leptwin.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6B2724AC6C350097319E /* leptwin.h */; };
-		62BA6B6324AC6C370097319E /* helpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6B2824AC6C350097319E /* helpers.h */; };
+
 		62BA6B6424AC6C370097319E /* ltrresultiterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6B2924AC6C350097319E /* ltrresultiterator.h */; };
 		62BA6B6524AC6C370097319E /* stack.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6B2A24AC6C350097319E /* stack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62BA6B6624AC6C370097319E /* array.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6B2B24AC6C350097319E /* array.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -150,7 +154,7 @@
 		62BA6BDF24AC70110097319E /* tiffconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6B1D24AC6C350097319E /* tiffconf.h */; };
 		62BA6BE024AC70110097319E /* ocrclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6AF524AC6C340097319E /* ocrclass.h */; };
 		62BA6BE124AC70110097319E /* pix.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6B0F24AC6C340097319E /* pix.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		62BA6BE224AC70110097319E /* helpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6B2824AC6C350097319E /* helpers.h */; };
+
 		62BA6BE324AC70110097319E /* stringcode.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6B0524AC6C340097319E /* stringcode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62BA6BE424AC70110097319E /* list.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6B0B24AC6C340097319E /* list.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62BA6BE924AC77DB0097319E /* libtesseract.h in Headers */ = {isa = PBXBuildFile; fileRef = 62BA6BE824AC77DB0097319E /* libtesseract.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -169,6 +173,8 @@
 		62BA6AF124AC6B570097319E /* capi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = capi.h; sourceTree = "<group>"; };
 		AABB000024AC6C340097319E /* export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = export.h; sourceTree = "<group>"; };
 		AABB000224AC6C340097319E /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		CCDD000024AC6C340097319E /* hashmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hashmap.h; sourceTree = "<group>"; };
+		CCDD000224AC6C340097319E /* colorfill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = colorfill.h; sourceTree = "<group>"; };
 		62BA6AF324AC6B610097319E /* allheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allheaders.h; sourceTree = "<group>"; };
 		62BA6AF524AC6C340097319E /* ocrclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ocrclass.h; sourceTree = "<group>"; };
 
@@ -221,7 +227,7 @@
 		62BA6B2524AC6C350097319E /* jconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jconfig.h; sourceTree = "<group>"; };
 
 		62BA6B2724AC6C350097319E /* leptwin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leptwin.h; sourceTree = "<group>"; };
-		62BA6B2824AC6C350097319E /* helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = helpers.h; sourceTree = "<group>"; };
+
 		62BA6B2924AC6C350097319E /* ltrresultiterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ltrresultiterator.h; sourceTree = "<group>"; };
 		62BA6B2A24AC6C350097319E /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
 		62BA6B2B24AC6C350097319E /* array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = array.h; sourceTree = "<group>"; };
@@ -282,14 +288,15 @@
 				62BA6B1224AC6C340097319E /* bmfdata.h */,
 				62BA6B2024AC6C350097319E /* bmp.h */,
 				62BA6AF724AC6C340097319E /* ccbord.h */,
+				CCDD000224AC6C340097319E /* colorfill.h */,
 				62BA6AFC24AC6C340097319E /* dewarp.h */,
 				62BA6B1124AC6C340097319E /* endianness.h */,
 				62BA6B2224AC6C350097319E /* environ.h */,
 				AABB000024AC6C340097319E /* export.h */,
 
 				62BA6B0C24AC6C340097319E /* gplot.h */,
+				CCDD000024AC6C340097319E /* hashmap.h */,
 				62BA6B0124AC6C340097319E /* heap.h */,
-				62BA6B2824AC6C350097319E /* helpers.h */,
 				62BA6B1524AC6C340097319E /* imageio.h */,
 				62BA6B1424AC6C340097319E /* jbclass.h */,
 				62BA6B2524AC6C350097319E /* jconfig.h */,
@@ -380,6 +387,8 @@
 				62BA6BC124AC700F0097319E /* capi.h in Headers */,
 				AABB000524AC700D0097319E /* export.h in Headers */,
 				AABB000724AC700D0097319E /* version.h in Headers */,
+				CCDD000524AC700D0097319E /* hashmap.h in Headers */,
+				CCDD000724AC700D0097319E /* colorfill.h in Headers */,
 				62BA6BCF24AC70100097319E /* dewarp.h in Headers */,
 				62BA6BA824AC700D0097319E /* stack.h in Headers */,
 				62BA6BD624AC70100097319E /* sudoku.h in Headers */,
@@ -397,7 +406,6 @@
 				62BA6BDC24AC70110097319E /* bmp.h in Headers */,
 				62BA6BBE24AC700F0097319E /* pnglibconf.h in Headers */,
 
-				62BA6BE224AC70110097319E /* helpers.h in Headers */,
 				62BA6BD024AC70100097319E /* jconfig.h in Headers */,
 				62BA6BB824AC700E0097319E /* jmorecfg.h in Headers */,
 				62BA6BC624AC700F0097319E /* publictypes.h in Headers */,
@@ -464,13 +472,14 @@
 				62BA6AF224AC6B570097319E /* capi.h in Headers */,
 				AABB000124AC6C340097319E /* export.h in Headers */,
 				AABB000324AC6C340097319E /* version.h in Headers */,
+				CCDD000124AC6C340097319E /* hashmap.h in Headers */,
+				CCDD000324AC6C340097319E /* colorfill.h in Headers */,
 				62BA6AF424AC6B610097319E /* allheaders.h in Headers */,
 
 				62BA6B6424AC6C370097319E /* ltrresultiterator.h in Headers */,
 				62BA6B3E24AC6C360097319E /* tiff.h in Headers */,
 
 				62BA6B4824AC6C360097319E /* jerror.h in Headers */,
-				62BA6B6324AC6C370097319E /* helpers.h in Headers */,
 				62BA6B3824AC6C350097319E /* pnglibconf.h in Headers */,
 				62BA6B5924AC6C370097319E /* png.h in Headers */,
 				62BA6B3324AC6C350097319E /* pngconf.h in Headers */,
