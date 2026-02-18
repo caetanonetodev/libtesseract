@@ -10,11 +10,9 @@ jobs:
     runs-on: macOS-latest
     if: "!contains(github.event.head_commit.message, 'Do not upload')"
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Install automake, pkg-config, and task
         run: brew install automake pkg-config go-task/tap/go-task
-      - name: Switch to Xcode 12.4
-        run: sudo xcode-select --switch /Applications/Xcode_12.4.app/Contents/Developer
       - name: Assign Tag Number to RELEASE_VERSION environment variable
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/*/}" >> $GITHUB_ENV
       - name: Build libtesseract
@@ -22,12 +20,10 @@ jobs:
       - name: Update Package.swift
         run: python3 update_package_swift.py --version $RELEASE_VERSION
       - name: Commit Package.swift update
-        uses: EndBug/add-and-commit@v4
+        uses: EndBug/add-and-commit@v9
         with:
           add: 'Package.swift'
           message: 'Auto-updating Package.swift'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create draft release
         uses: ncipollo/release-action@v1
         with:
