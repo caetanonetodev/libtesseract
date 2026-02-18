@@ -411,7 +411,16 @@ tasks:
 
   download-libtesseract:
     cmds:
-      - rsync -a --exclude='.git' --exclude='build' {{.TESSERACT_LOCAL_SRC}}/ {{.TESSERACT_SRC}}/
+      - |
+        if [ -d "{{.TESSERACT_LOCAL_SRC}}" ]; then
+          echo "Using local Tesseract source from {{.TESSERACT_LOCAL_SRC}}"
+          rsync -a --exclude='.git' --exclude='build' {{.TESSERACT_LOCAL_SRC}}/ {{.TESSERACT_SRC}}/
+        else
+          echo "Downloading Tesseract {{.TESSERACT_VERSION}} from GitHub"
+          curl -LO https://github.com/tesseract-ocr/tesseract/archive/{{.TESSERACT_VERSION}}.zip
+          unzip -a {{.TESSERACT_VERSION}}.zip
+          rm {{.TESSERACT_VERSION}}.zip
+        fi
     status:
       - test -d {{.TESSERACT_SRC}}
 
